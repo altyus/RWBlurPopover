@@ -17,6 +17,11 @@
 /// set to YES if you want content view controller to be dismissed by "throwing away"
 @property (nonatomic, assign, getter = isThrowingGestureEnabled) BOOL throwingGestureEnabled;
 
+/**
+ *  set to YES if you want a tap anywhere on the view to dismiss the view
+ */
+@property(nonatomic, assign) BOOL tapDismissesView;
+
 /// shows a popover inside presenting view controller
 - (void)showInViewController:(UIViewController *)presentingViewController;
 

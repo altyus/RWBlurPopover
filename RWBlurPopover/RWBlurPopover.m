@@ -86,9 +86,11 @@ static void swizzleMethod(Class class, SEL originSelector, SEL swizzledSelector)
     self.popoverView.translatesAutoresizingMaskIntoConstraints = YES;
     self.popoverView.throwingGestureEnabled = self.throwingGestureEnabled;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-    [self.popoverView.blurView addGestureRecognizer:tapGesture];
-    
+    if (self.tapDismissesView) {
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+        
+        [self.popoverView.blurView addGestureRecognizer:tapGesture];
+    }
     [self.presentingViewController addChildViewController:self.contentViewController];
     [self.presentingViewController.view addSubview:self.popoverView];
     [self.contentViewController didMoveToParentViewController:self.presentingViewController];
